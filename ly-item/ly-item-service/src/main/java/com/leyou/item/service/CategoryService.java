@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CategoryService {
@@ -35,4 +36,8 @@ public class CategoryService {
         }
         return list;
     }
+    public List<String> queryNameByIds(List<Long> ids) {
+        return this.categoryMapper.selectByIdList(ids).stream().map(Category::getName).collect(Collectors.toList());
+    }
+
 }

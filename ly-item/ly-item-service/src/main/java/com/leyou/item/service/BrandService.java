@@ -23,6 +23,11 @@ public class BrandService {
     @Autowired
     private BrandMapper brandMapper;
 
+    public List<Brand> queryBrandByCategory(Long cid) {
+        return this.brandMapper.queryByCategoryId(cid);
+    }
+
+
     public PageResult<Brand> queryBrandByPage(
             Integer page, Integer rows, String sortBy, Boolean desc, String key) {
         // 开始分页
